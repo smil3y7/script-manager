@@ -1,0 +1,128 @@
+{
+  "scripts": [
+    {
+      "slug": "hello-python",
+      "name": "Hello (Python primer)",
+      "description": "Primer Python skripte. Pokaže, kako registrirati novo skripto z opcijskimi vnosnimi polji.",
+      "language": "python",
+      "entry": "scripts/python/hello.py",
+      "tags": ["primer"],
+      "inputs": [
+        { "name": "ime", "label": "Ime", "type": "text", "default": "svet" }
+      ],
+      "timeout_ms": 10000
+    },
+    {
+      "slug": "hello-js",
+      "name": "Hello (Node primer)",
+      "description": "Primer Node.js skripte. Brez vnosnih polj - samo zažene in vrne izpis.",
+      "language": "node",
+      "entry": "scripts/js/hello.js",
+      "tags": ["primer"],
+      "inputs": [],
+      "timeout_ms": 10000
+    },
+    {
+      "slug": "dream-cartography",
+      "name": "Kartografija sanj - tečaj",
+      "description": "Spletni tečaj kartografije sanj po metodi Dreamhackers. Prepisano iz tkinter GUI v CLI - moduli 1-4 ali vse skupaj.",
+      "language": "python",
+      "entry": "scripts/python/dream_cartography_cli.py",
+      "tags": ["sanje", "dreamhackers"],
+      "inputs": [
+        { "name": "modul", "label": "Modul (1-4 ali vse)", "type": "text", "default": "vse" }
+      ],
+      "timeout_ms": 15000,
+      "note": "Prvotna verzija je imela tkinter GUI okno - tukaj je samo logika tečaja kot CLI. Shranjevanje rezultata v datoteko ni trajno na Vercelu (glej README)."
+    },
+    {
+      "slug": "pasjans-medici",
+      "name": "Pasjans Medici Simulator",
+      "description": "Simulacija zlaganja Pasjanse Medici po metodi Dreamhackers, z interpretacijo verige kart.",
+      "language": "python",
+      "entry": "scripts/python/pasjans_medici.py",
+      "tags": ["sanje", "dreamhackers"],
+      "inputs": [
+        { "name": "max_attempts", "label": "Max poskusov", "type": "number", "default": "10000" }
+      ],
+      "timeout_ms": 15000,
+      "note": "Shranjevanje rezultata v datoteko ni trajno na Vercelu (glej README, razdelek o omejitvah)."
+    },
+    {
+      "slug": "export-schema",
+      "name": "Export SQLite sheme",
+      "description": "Izvozi shemo SQLite baze (tabele, stolpci, foreign keys, indeksi) v JSON datoteko.",
+      "language": "python",
+      "entry": "scripts/python/export_schema.py",
+      "tags": ["baza", "izvoz"],
+      "inputs": [
+        { "name": "db_path", "label": "Pot do .sqlite datoteke", "type": "text", "default": "" }
+      ],
+      "timeout_ms": 20000,
+      "note": "Bere lokalno datoteko na disku - deluje samo pri lokalnem zagonu (npm run dev), ne na Vercel produkciji, ker serverless nima dostopa do tvojega lokalnega diska."
+    },
+    {
+      "slug": "autodoc-generate",
+      "name": "Autodoc generator",
+      "description": "Skenira projekt in zgenerira osnovno dokumentacijo: drevo datotek, odvisnosti, arhitekturo, stanje projekta.",
+      "language": "python",
+      "entry": "scripts/python/generate.py",
+      "tags": ["dokumentacija", "projekt"],
+      "inputs": [
+        { "name": "root", "label": "Pot do projekta", "type": "text", "default": "." }
+      ],
+      "timeout_ms": 30000,
+      "note": "Bere/piše lokalni datotečni sistem - deluje samo pri lokalnem zagonu, ne na Vercel produkciji."
+    },
+    {
+      "slug": "fontconverter",
+      "name": "Font Converter (TTF -> JS/jsPDF)",
+      "description": "Pretvori .ttf font v .js datoteko z base64 zakodirano pisavo, za vgrajevanje v jsPDF.",
+      "language": "node",
+      "entry": "scripts/js/fontconverter.js",
+      "tags": ["pdf", "fonti"],
+      "inputs": [
+        { "name": "fontName", "label": "Ime fonta (brez .ttf)", "type": "text", "default": "DejaVuSans" }
+      ],
+      "timeout_ms": 15000,
+      "note": "Pričakuje <ime>.ttf v isti mapi kot skripta - deluje samo pri lokalnem zagonu, ne na Vercel produkciji."
+    },
+    {
+      "slug": "export-project-dump",
+      "name": "Export Project Dump",
+      "description": "Izvozi vsebino celotnega projekta (vse tekstovne datoteke) v zaporedje .txt delov, primerno za pošiljanje LLM-jem.",
+      "language": "node",
+      "entry": "scripts/js/export_project_dump.js",
+      "tags": ["dokumentacija", "projekt"],
+      "inputs": [
+        { "name": "root", "label": "Pot do projekta", "type": "text", "default": "." }
+      ],
+      "timeout_ms": 30000,
+      "note": "Bere/piše lokalni datotečni sistem - deluje samo pri lokalnem zagonu, ne na Vercel produkciji."
+    },
+    {
+      "slug": "fix-backup",
+      "name": "Fix Backup (dešifriranje + popravek JSON)",
+      "description": "Popravi okvarjen JSON backup (manjkajoč zaključni oklepaj) in ga dešifrira (AES-GCM iz gesla).",
+      "language": "docs",
+      "entry": "scripts/docs/fix_backup.js",
+      "tags": ["backup", "brskalnik"],
+      "inputs": [
+        { "name": "password", "label": "Geslo (samo za tvoj spomin, ni poslano nikamor)", "type": "password", "default": "" }
+      ],
+      "timeout_ms": 5000,
+      "note": "Brskalniški devtools console script - prilepi v konzolo na strani, kjer rabiš dešifrirati backup. Geslo v kodi je placeholder PASSWORD, pred uporabo ga ročno zamenjaj."
+    },
+    {
+      "slug": "oneiro-stress-test",
+      "name": "Oneiro QA Stress Test (MAX)",
+      "description": "Stress/benchmark orodja za Oneiro aplikacijo - delajo z IndexedDB in localStorage v brskalniku.",
+      "language": "docs",
+      "entry": "scripts/docs/oneiro_QA_max_stress_test_console_script.js",
+      "tags": ["oneiro", "stress-test", "brskalnik"],
+      "inputs": [],
+      "timeout_ms": 5000,
+      "note": "Brskalniški devtools console script - prilepi v konzolo na strani Oneiro aplikacije. Po nalaganju so na voljo funkcije stressInsertMax(), bulkInsertMax(), benchmarkWritesMax(), fillLocalQuotaMax(), cleanupLocalQuotaMax()."
+    }
+  ]
+}
